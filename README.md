@@ -6,6 +6,13 @@
 
 > webpack-tornado is inhreited from [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) 
 
+## Task List
+
+- [x] template base from [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) 
+- [x] support stylus for css
+- [x] support pug for html templates (*.vue)
+- [ ] python tornado frameworks
+
 ## Documentation
 
 - [For this template](http://vuejs-templates.github.io/webpack): common questions specific to this template are answered and each part is described in greater detail
