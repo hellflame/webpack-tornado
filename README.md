@@ -12,6 +12,7 @@
 - [x] support stylus for css
 - [x] support pug for html templates (*.vue)
 - [ ] python tornado frameworks
+- [ ] document updates
 
 ## Documentation
 
