@@ -1,13 +1,13 @@
 {{#pug}}
 <template lang="pug">
   #app
-    img(src="./assets/logo.png")
+    img(src="/public/logo.png")
     router-view
 </template>
 {{else}}
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img src="/public/logo.png">
     {{#router}}
     <router-view></router-view>
     {{else}}
