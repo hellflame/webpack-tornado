@@ -18,3 +18,9 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+
+# python
+*.py[cod]
+
+# config.py in dev and product mode
+project/config.py
