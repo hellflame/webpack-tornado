@@ -12,6 +12,16 @@ All build commands are executed via [NPM Scripts](https://docs.npmjs.com/misc/sc
 - Lint-on-save with ESLint
 - Source maps
 
+> The whole project won't work until you setup and run the backend
+
+```bash
+# You will need to run the tornado to see the result
+python run.py
+
+```
+
+
+
 ### `npm run build`
 
 > Build assets for production. See [Integrating with Backend Framework](backend.md) for more details.
@@ -20,6 +30,8 @@ All build commands are executed via [NPM Scripts](https://docs.npmjs.com/misc/sc
 - HTML minified with [html-minifier](https://github.com/kangax/html-minifier).
 - CSS across all components extracted into a single file and minified with [cssnano](https://github.com/ben-eb/cssnano).
 - All static assets compiled with version hashes for efficient long-term caching, and a production `index.html` is auto-generated with proper URLs to these generated assets.
+
+> built js and css files will cover the last built result at `project/static`
 
 ### `npm run unit`
 
