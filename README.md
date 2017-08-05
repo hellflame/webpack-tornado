@@ -6,6 +6,13 @@
 
 > webpack-tornado is inhreited from [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) 
 
+## Enables
+
+- SSR (server side render)
+- Multiple separate pages in One Site
+- One deploy instance, Multiple deveices access (by default)
+- Access Control from application level, controled by back end
+
 ## Task List
 
 - [x] template base from [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) 
@@ -33,6 +40,21 @@ $ npm run dev
 
 If port 8080 is already in use on your machine you must change the port number in `/config/index.js`. Otherwise `npm run dev` will fail.
 
+Serve the front end page is half way to start the whole project, you still need to start the back end:
+
+```bash
+$ python run.py
+```
+
+The back end (The whole project entry) will be running at 0.0.0.0:5000 by default
+
+It is ok to give it another usable port numer:
+
+```bash
+# run @ http://0.0.0.0:5001
+$ python run.py 5001
+```
+
 ## What's Included
 
 - `npm run dev`: first-in-class development experience.
@@ -56,6 +78,7 @@ If port 8080 is already in use on your machine you must change the port number i
   - Works with one command out of the box:
     - Selenium and chromedriver dependencies automatically handled.
     - Automatically spawns the Selenium server.
+- `python run.py`: Tornado Back end of the project.
 
 ### Fork It And Make Your Own
 

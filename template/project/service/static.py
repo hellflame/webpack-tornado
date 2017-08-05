@@ -24,16 +24,19 @@ class StaticService(base.NormalBase):
             handle = base.web.StaticFileHandler.get_content(target)
             for i in handle:
                 self.write(i)
-            return
+
         elif dirs == 'static':
             if self.settings['debug']:
+                client = httpClient.HTTPClient()
                 try:
-                    response = httpClient.HTTPClient().fetch("http://127.0.0.1:8080/static/{}".format(path))
+                    response = client.fetch("http://{}:8080/static/{}".format(self.request.host.split(":")[0], path))
                     self.write(response.body)
                 except Exception as e:
-                    return self.write("")
+                    self.write("")
+                client.close()
             else:
                 """
+                # Restrict the Referer Hosts
                 if not self.request.host == self.settings['domain']:
                     return self.send_error(404)
                 """
@@ -56,7 +59,8 @@ routes.append((r"/(static|public)/(.+?)", StaticService))
 
 class WebpackHMR(base.NormalBase):
     def get(self):
-        return self.redirect("http://localhost:8080/__webpack_hmr")
+        # event stream redirect
+        return self.redirect("http://{}:8080/__webpack_hmr".format(self.request.host.split(":")[0]))
 
 if DEBUG:
     routes.append((r'/__webpack_hmr', WebpackHMR))
