@@ -15,5 +15,6 @@ if __name__ == '__main__':
         address = '0.0.0.0'
     else:
         address = '127.0.0.1'
+    print("app runs&reload at http://{}:{}".format(address, port))
     app.listen(port, address=address)
     ioloop.IOLoop.current().start()
