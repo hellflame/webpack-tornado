@@ -1,17 +1,19 @@
+from tornado.options import options, define, parse_command_line
 import tornado.ioloop as ioloop
 import tornado.web as web
 import logging
 import sys
+
 from project.service import routes
 from project.config import settings, DEBUG
+
+define('port', default=5000, help="Running port")
 
 # print routes
 app = web.Application(handlers=routes, **settings)
 
 if __name__ == '__main__':
-    port = 5000
-    if len(sys.argv) == 2 and sys.argv[1].isdigit():
-        port = int(sys.argv[1])
+    parse_command_line()
     if DEBUG:
         address = '0.0.0.0'
         logging.basicConfig(level=logging.DEBUG)
@@ -25,6 +27,6 @@ if __name__ == '__main__':
         """
         logging.basicConfig(level=logging.WARNING)
 
-    print("app runs&reload at http://{}:{}".format(address, port))
-    app.listen(port, address=address)
+    print("app runs&reload at http://{}:{}".format(address, options.port))
+    app.listen(options.port, address=address)
     ioloop.IOLoop.current().start()

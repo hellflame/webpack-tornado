@@ -15,19 +15,21 @@ npm install
 ### Develop Mode
 
 ```bash
-# serve with hot reload at localhost:8080
+# serve with hot reload at 0.0.0.0:8080
 npm run dev
 ```
 
 ```bash
-# serve tornado at localhost:5000 (default)
+# serve tornado with hot reload at 0.0.0.0:5000 (default)
 python run.py
-
+# or
 # serve tornado with other port
-python run.py [port]
+python run.py --port=[port]
 ```
 
-**open http://localhost:5000 (or other port that you specified with run.py) in your browser**
+**open http://0.0.0.0:5000 (or other port that you specified with run.py) in your browser**
+
+Running @http://0.0.0.0, so that you can visit the page from the same intranet via your ip and port. If `Debug=False`(@project/config.py), project will just run @http://127.0.0.1 .
 
 ```bash
 {{#unit}}
@@ -55,5 +57,7 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+
+@project/config.py should be a copy from @project/config.example.py, and this file is not under git track, you can change it whatever you like
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

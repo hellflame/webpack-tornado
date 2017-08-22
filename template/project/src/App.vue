@@ -32,6 +32,14 @@ export default {
 
 {{#stylus}}
 <style lang="stylus">
+@keyframes shake
+  0%
+    transform rotate(0deg)
+  50%
+    transform rotate(-5deg)
+  100%
+    transform: rotate(5deg)
+
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
@@ -39,6 +47,10 @@ export default {
   text-align center
   color #2c3e50
   margin-top 60px
+
+  img:hover
+    animation shake .2s ease infinite
+
 </style>
 {{else}}
 <style>
@@ -49,6 +61,20 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+@keyframes shake{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(-5deg);
+  }
+  100%{
+    transform: rotate(5deg);
+  }
+}
+#app img:hover{
+  animation: shake .2s ease infinite;
 }
 </style>
 {{/stylus}}
