@@ -16,7 +16,7 @@ if __name__ == '__main__':
     parse_command_line()
     if DEBUG:
         address = '0.0.0.0'
-        logging.basicConfig(level=logging.DEBUG)
+        logging.basicConfig(level=logging.INFO)
     else:
         # running at localhost and different ports to use nginx for load balancing
         address = '127.0.0.1'
@@ -27,6 +27,6 @@ if __name__ == '__main__':
         """
         logging.basicConfig(level=logging.WARNING)
 
-    print("app runs&reload at http://{}:{}".format(address, options.port))
+    logging.info("app runs&reload at http://{}:{}".format(address, options.port))
     app.listen(options.port, address=address)
     ioloop.IOLoop.current().start()
