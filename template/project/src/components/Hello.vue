@@ -22,17 +22,26 @@
       li
         a(href="https://github.com/vuejs/awesome-vue", target="_blank") awesome-vue
     h2 Config Options
-    ul
-      li Project Name: {{ name }}
-      li Project Desc: {{ description }}
-      li Author: \{{ author }}
-      li Vue Build: {{ build }}
-      li Using Router: {{ router }}
-      li Using Stylus: {{ stylus }}
-      li Using Pug: {{ pug }}
-      li Using Lint: {{ lint }}
+    ul#config
+      li Project Name:
+        b {{ name }}
+      li Project Desc:
+        b {{ description }}
+      li Author:
+        b \{{ author }}
+      li Vue Build:
+        b {{ build }}
+      li Using Router:
+        b {{ router }}
+      li Using Stylus:
+        b {{ stylus }}
+      li Using Pug:
+        b {{ pug }}
+      li Using Lint:
+        b {{ lint }}
       {{#lint}}
-      li Lint Config: {{ lintConfig }}
+      li Lint Config:
+        b {{ lintConfig }}
       {{/lint}}
       {{#unit}}
       li unit tests with Karma + Mocha
@@ -62,17 +71,17 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
     <h2>Config Options</h2>
-    <ul>
-      <li>Project Name: {{ name }}</li>
-      <li>Project Desc: {{ description }}</li>
-      <li>Author: \{{ author }}</li>
-      <li>Vue Build: {{ build }}</li>
-      <li>Using Router: {{ router }}</li>
-      <li>Using Stylus: {{ stylus }}</li>
-      <li>Using Pug: {{ pug }}</li>
-      <li>Using Lint: {{ lint }}</li>
+    <ul id="options">
+      <li>Project Name: <b>{{ name }}</b></li>
+      <li>Project Desc: <b>{{ description }}</b></li>
+      <li>Author: <b>\{{ author }}</b></li>
+      <li>Vue Build: <b>{{ build }}</b></li>
+      <li>Using Router: <b>{{ router }}</b></li>
+      <li>Using Stylus: <b>{{ stylus }}</b></li>
+      <li>Using Pug: <b>{{ pug }}</b></li>
+      <li>Using Lint: <b>{{ lint }}</b></li>
       {{#lint}}
-      <li>Lint Config: {{ lintConfig }}</li>
+      <li>Lint Config: <b>{{ lintConfig }}</b></li>
       {{/lint}}
       {{#unit}}
       <li>unit tests with Karma + Mocha</li>
@@ -111,6 +120,17 @@ ul
     margin 0 10px
     a
       color #42b983
+
+ul#options
+  width 30%
+  margin auto
+  text-align left
+  li
+    border-bottom 1px dashed silver
+    display block
+    b
+      float right
+
 </style>
 {{else}}
 <style scoped>
@@ -130,6 +150,21 @@ li {
 
 a {
   color: #42b983;
+}
+
+ul#options{
+  width: 30%;
+  margin: auto;
+  text-align: left;
+}
+
+ul#options li{
+  display: block;
+  border-bottom: 1px dashed silver;
+}
+
+ul#options li b{
+  float:right;
 }
 </style>
 {{/stylus}}
