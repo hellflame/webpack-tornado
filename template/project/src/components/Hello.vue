@@ -22,7 +22,7 @@
       li
         a(href="https://github.com/vuejs/awesome-vue", target="_blank") awesome-vue
     h2 Config Options
-    ul#config
+    ul#options
       li Project Name:
         b {{ name }}
       li Project Desc:
