@@ -23,16 +23,16 @@
         a(href="https://github.com/vuejs/awesome-vue", target="_blank") awesome-vue
     h2 Config Options
     ul
-      li Project Name: \{{ name }}
-      li Project Desc: \{{ description }}
-      li Author: \{{ author }}
-      li Vue Build: \{{ build }}
-      li Using Router: \{{ router }}
-      li Using Stylus: \{{ stylus }}
-      li Using Pug: \{{ pug }}
-      li Using Lint: \{{ lint }}
+      li Project Name: {{ name }}
+      li Project Desc: {{ description }}
+      li Author: {{ author }}
+      li Vue Build: {{ build }}
+      li Using Router: {{ router }}
+      li Using Stylus: {{ stylus }}
+      li Using Pug: {{ pug }}
+      li Using Lint: {{ lint }}
       {{#lint}}
-      li Lint Config: \{{ lintConfig }}
+      li Lint Config: {{ lintConfig }}
       {{/lint}}
       {{#unit}}
       li unit tests with Karma + Mocha
@@ -63,16 +63,16 @@
     </ul>
     <h2>Config Options</h2>
     <ul>
-      <li>Project Name: \{{ name }}</li>
-      <li>Project Desc: \{{ description }}</li>
-      <li>Author: \{{ author }}</li>
-      <li>Vue Build: \{{ build }}</li>
-      <li>Using Router: \{{ router }}</li>
-      <li>Using Stylus: \{{ stylus }}</li>
-      <li>Using Pug: \{{ pug }}</li>
-      <li>Using Lint: \{{ lint }}</li>
+      <li>Project Name: {{ name }}</li>
+      <li>Project Desc: {{ description }}</li>
+      <li>Author: {{ author }}</li>
+      <li>Vue Build: {{ build }}</li>
+      <li>Using Router: {{ router }}</li>
+      <li>Using Stylus: {{ stylus }}</li>
+      <li>Using Pug: {{ pug }}</li>
+      <li>Using Lint: {{ lint }}</li>
       {{#lint}}
-      <li>Lint Config: \{{ lintConfig }}</li>
+      <li>Lint Config: {{ lintConfig }}</li>
       {{/lint}}
       {{#unit}}
       <li>unit tests with Karma + Mocha</li>
