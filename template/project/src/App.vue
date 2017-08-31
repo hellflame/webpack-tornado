@@ -2,7 +2,11 @@
 <template lang="pug">
   #app
     img(src="/public/logo.png")
+    {{#router}}
     router-view
+    {{else}}
+    hello
+    {{/router}}
 </template>
 {{else}}
 <template>
