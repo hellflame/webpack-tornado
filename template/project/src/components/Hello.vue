@@ -21,6 +21,25 @@
         a(href="http://vue-loader.vuejs.org/", target="_blank") vue-loader
       li
         a(href="https://github.com/vuejs/awesome-vue", target="_blank") awesome-vue
+    h2 Config Options
+    ul
+      li Project Name: \{{ name }}
+      li Project Desc: \{{ description }}
+      li Author: \{{ author }}
+      li Vue Build: \{{ build }}
+      li Using Router: \{{ router }}
+      li Using Stylus: \{{ stylus }}
+      li Using Pug: \{{ pug }}
+      li Using Lint: \{{ lint }}
+      {{#lint}}
+      li Lint Config: \{{ lintConfig }}
+      {{/lint}}
+      {{#unit}}
+      li unit tests with Karma + Mocha
+      {{/unit}}
+      {{#e2e}}
+      li e2e tests with Nightwatch
+      {{/e2e}}
 </template>
 {{else}}
 <template>
@@ -42,6 +61,26 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <h2>Config Options</h2>
+    <ul>
+      <li>Project Name: \{{ name }}</li>
+      <li>Project Desc: \{{ description }}</li>
+      <li>Author: \{{ author }}</li>
+      <li>Vue Build: \{{ build }}</li>
+      <li>Using Router: \{{ router }}</li>
+      <li>Using Stylus: \{{ stylus }}</li>
+      <li>Using Pug: \{{ pug }}</li>
+      <li>Using Lint: \{{ lint }}</li>
+      {{#lint}}
+      <li>Lint Config: \{{ lintConfig }}</li>
+      {{/lint}}
+      {{#unit}}
+      <li>unit tests with Karma + Mocha</li>
+      {{/unit}}
+      {{#e2e}}
+      <li>e2e tests with Nightwatch</li>
+      {{/e2e}}
+      </ul>
   </div>
 </template>
 {{/pug}}
