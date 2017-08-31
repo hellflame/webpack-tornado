@@ -25,7 +25,7 @@
     ul
       li Project Name: {{ name }}
       li Project Desc: {{ description }}
-      li Author: {{ author }}
+      li Author: \{{ author }}
       li Vue Build: {{ build }}
       li Using Router: {{ router }}
       li Using Stylus: {{ stylus }}
@@ -65,7 +65,7 @@
     <ul>
       <li>Project Name: {{ name }}</li>
       <li>Project Desc: {{ description }}</li>
-      <li>Author: {{ author }}</li>
+      <li>Author: \{{ author }}</li>
       <li>Vue Build: {{ build }}</li>
       <li>Using Router: {{ router }}</li>
       <li>Using Stylus: {{ stylus }}</li>
@@ -90,6 +90,7 @@ export default {
   name: 'hello',
   data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     return {
+      author: '\{{ author }}',
       msg: 'Welcome to Your Vue.js with Tornado App'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
