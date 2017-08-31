@@ -90,7 +90,7 @@ export default {
   name: 'hello',
   data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     return {
-      author: '\{{ author }}',
+      author: '{{ author }}',
       msg: 'Welcome to Your Vue.js with Tornado App'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
