@@ -35,5 +35,11 @@ class NormalBase(web.RequestHandler):
                 'msg': 'Reference Invalid'
             })
 
+    def _request_summary(self):
+        return "{} {} @{}".format(self.request.method,
+                                  self.request.uri,
+                                  self.request.headers.get('X-Real-IP') or self.request.remote_ip)
+
+
 
 

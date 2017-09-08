@@ -15,8 +15,9 @@ app = web.Application(handlers=routes, **settings)
 if __name__ == '__main__':
     parse_command_line()
     if DEBUG:
+        # ip = 0.0.0.0, so other devices can access
         address = '0.0.0.0'
-        logging.basicConfig(level=logging.INFO)
+        logging.getLogger().setLevel(logging.DEBUG)
     else:
         # running at localhost and different ports to use nginx for load balancing
         address = '127.0.0.1'
@@ -25,8 +26,8 @@ if __name__ == '__main__':
             better to log into sys.stdout,
             and use `supervisor` or some other tools to redirect to safe file
         """
-        logging.basicConfig(level=logging.WARNING)
+        logging.getLogger().setLevel(logging.WARNING)
 
-    logging.info("app runs&reload at http://{}:{}".format(address, options.port))
+    logging.info("app runs at http://{}:{}".format(address, options.port))
     app.listen(options.port, address=address)
     ioloop.IOLoop.current().start()
