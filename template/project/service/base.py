@@ -1,7 +1,12 @@
+import logging
 import tornado.web as web
 
 
 class NormalBase(web.RequestHandler):
+    def __init__(self, application, request, **kwargs):
+        super(NormalBase, self).__init__(application, request, **kwargs)
+        self.logger = logging.getLogger()
+
     def set_default_headers(self):
         self.set_header('Server', 'NO TELLING YOU')
 

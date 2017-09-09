@@ -6,24 +6,27 @@ import mimetypes
 from . import base, routes
 from ..config import DEBUG
 import tornado.httpclient as httpClient
+from tornado import gen
 
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 
 class StaticService(base.NormalBase):
+    @gen.coroutine
     def get(self, dirs, path):
         if dirs == 'public':
             target = os.path.join(self.settings['public'], path)
             if not os.path.exists(target) or os.path.isdir(target):
-                return self.send_error(404)
+                self.send_error(404)
+            else:
+                self.set_header("Content-Type", mimetypes.guess_type(target)[0] or
+                                'application/octet-stream')
 
-            self.set_header("Content-Type", mimetypes.guess_type(target)[0] or
-                            'application/octet-stream')
-
-            handle = base.web.StaticFileHandler.get_content(target)
-            for i in handle:
-                self.write(i)
+                handle = base.web.StaticFileHandler.get_content(target)
+                for i in handle:
+                    self.write(i)
+                    yield self.flush()
 
         elif dirs == 'static':
             if self.settings['debug']:
@@ -43,16 +46,17 @@ class StaticService(base.NormalBase):
 
                 target = os.path.join(self.settings['static'], path)
                 if not os.path.exists(target) or os.path.isdir(target):
-                    return self.send_error(404)
+                    self.send_error(404)
+                else:
+                    self.set_header("Content-Type", mimetypes.guess_type(target)[0] or
+                                    'application/octet-stream')
 
-                self.set_header("Content-Type", mimetypes.guess_type(target)[0] or
-                                'application/octet-stream')
-
-                handle = base.web.StaticFileHandler.get_content(target)
-                for i in handle:
-                    self.write(i)
+                    handle = base.web.StaticFileHandler.get_content(target)
+                    for i in handle:
+                        self.write(i)
+                        yield self.flush()
         else:
-            return self.send_error(404)
+            self.send_error(404)
 
 routes.append((r"/(static|public)/(.+?)", StaticService))
 
