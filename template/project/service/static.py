@@ -8,8 +8,9 @@ from ..config import DEBUG
 import tornado.httpclient as httpClient
 from tornado import gen
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+if sys.version_info.major == 2:
+    reload(sys)
+    sys.setdefaultencoding('utf8')
 
 
 class StaticService(base.NormalBase):
