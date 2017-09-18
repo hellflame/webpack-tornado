@@ -7,12 +7,12 @@ import sys
 from project.service import routes
 from project.config import settings, DEBUG
 
-define('port', default=5000, help="Running port")
 
-# print routes
-app = web.Application(handlers=routes, **settings)
+def main():
+    define('port', default=5000, help="Running port")
 
-if __name__ == '__main__':
+    # print routes
+    app = web.Application(handlers=routes, **settings)
     parse_command_line()
     if DEBUG:
         # ip = 0.0.0.0, so other devices can access
@@ -31,3 +31,7 @@ if __name__ == '__main__':
     logging.info("app runs at http://{}:{}".format(address, options.port))
     app.listen(options.port, address=address)
     ioloop.IOLoop.current().start()
+
+
+if __name__ == '__main__':
+    main()

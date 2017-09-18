@@ -12,6 +12,7 @@
 - Multiple separate pages in One Site
 - One deploy instance, Multiple deveices access (by default)
 - Access Control from application level, controled by back end
+- Flask-like router program
 
 ## Task List
 

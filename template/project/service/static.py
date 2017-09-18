@@ -3,16 +3,16 @@ import os
 import sys
 import mimetypes
 
-from . import base, routes
+from . import base, route
 from ..config import DEBUG
 import tornado.httpclient as httpClient
 from tornado import gen
 
-if sys.version_info.major == 2:
-    reload(sys)
-    sys.setdefaultencoding('utf8')
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 
+@route(r'/(static|public)/(.+?)')
 class StaticService(base.NormalBase):
     @gen.coroutine
     def get(self, dirs, path):
@@ -59,14 +59,12 @@ class StaticService(base.NormalBase):
         else:
             self.send_error(404)
 
-routes.append((r"/(static|public)/(.+?)", StaticService))
-
-
-class WebpackHMR(base.NormalBase):
-    def get(self):
-        # event stream redirect
-        return self.redirect("http://{}:8080/__webpack_hmr".format(self.request.host.split(":")[0]))
 
 if DEBUG:
-    routes.append((r'/__webpack_hmr', WebpackHMR))
+    @route(r'/__webpack_hmr')
+    class WebpackHMR(base.NormalBase):
+        def get(self):
+            # event stream redirect
+            return self.redirect("http://{}:8080/__webpack_hmr".format(self.request.host.split(":")[0]))
+
 
