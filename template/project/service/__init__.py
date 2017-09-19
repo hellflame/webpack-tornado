@@ -16,7 +16,7 @@ def route(path_pattern, extra=None):
 import static  # static file handler
 import templates  # template file handler
 
-# common handler
+# common handler, python files like "s_*.py"
 for _, _, service in os.walk(os.path.dirname(__file__)):
     for i in filter(lambda py: fnmatch.fnmatch(py, 's_*.py'), service):
         __import__('project.service.' + i[:-3])
