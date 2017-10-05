@@ -5,6 +5,7 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
+var fs = require('fs')
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
@@ -64,6 +65,16 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+app.get("/templates/:html", (req, res) => {
+  var p = path.resolve(__dirname + "/../project" + req.path)
+  if(fs.existsSync(p)){
+    res.sendFile(p)
+  }
+  else{
+    res.send("文件不存在")
+  }
+})
 
 var uri = 'http://0.0.0.0:' + port
 
