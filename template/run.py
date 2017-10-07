@@ -28,7 +28,9 @@ def main():
         """
         logging.getLogger().setLevel(logging.WARNING)
 
-    logging.info("app runs at http://{}:{}".format(address, options.port))
+    logging.info("app runs at http://%(address)s:%(port)d",
+                 {"address": address,
+                  "port": options.port})
     app.listen(options.port, address=address)
     ioloop.IOLoop.current().start()
 
